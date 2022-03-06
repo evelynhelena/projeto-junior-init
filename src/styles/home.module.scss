@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+  .content {
+    h1 {
+      font-size: 5.375rem;
+      line-height: 7.063rem;
+      margin-top: 15px;
+      span{
+          color: var(--purple-100);
+      }
+    }
+    .greeting{
+        font-size: 1.563rem;
+        line-height: 3.125rem;
+        color: var(--cyan-100);
+    }
+
+    .info{
+        font-size: 1.50rem;
+        color: var(--gray-100);
+        max-width: 37.5rem;
+        line-height: 2.75rem;
+        margin-top: 1.875rem;
+    }
+  }
+}
