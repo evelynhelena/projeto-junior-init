@@ -22,7 +22,7 @@
       h1 {
         font-size: 5.375rem;
         line-height: 7.063rem;
-        margin-top: 15px;
+        margin-top: 0.938rem;
         span {
           color: var(--purple-100);
         }
@@ -36,7 +36,7 @@
     justify-content: space-between;
     background-image: url("../../public/images/Starts.png");
     background-repeat: no-repeat;
-    background-position: cover;
+    background-position: center;
     .imageMe {
       width: 31.25rem;
       height: 31.25rem;
@@ -53,24 +53,35 @@
       .follow {
         margin-top: 3rem;
       }
-
-      .iconsSocialMedias {
-        a {
-          svg {
-            height: 3.125rem;
-            width: 3.125rem;
-          }
-          color: var(--purple-100);
-          &:nth-last-child(2n) {
-            margin: 0 2rem;
+    }
+    .iconsSocialMedias {
+      a {
+        padding-right: 1rem;
+        svg {
+          height: 3.125rem;
+          width: 3.125rem;
+          transition: transform 0.5s;
+          &:hover{
+            transform: rotate(20deg);
           }
         }
+
       }
     }
   }
+}
+.rocketFooter{
+  position: absolute;
+  right: 0;
+  bottom: -114%;
+}
+
+.astronautFooter{
+  position: absolute;
 }
 
 .bgLines {
   background-image: url("../../public/images/lines.png");
   background-repeat: no-repeat;
+  background-position: left;
 }

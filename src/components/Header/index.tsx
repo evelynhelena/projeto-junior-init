@@ -28,7 +28,7 @@ export function Header() {
 
     return (
         <AppBar position="static" color="transparent" className={styles.container}>
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
