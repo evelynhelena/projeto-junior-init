@@ -1,29 +1,76 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 3rem;
-  .content {
-    h1 {
-      font-size: 5.375rem;
-      line-height: 7.063rem;
-      margin-top: 15px;
-      span{
+  .greeting {
+    font-size: 1.563rem;
+    line-height: 3.125rem;
+    color: var(--cyan-100);
+    text-transform: uppercase;
+  }
+
+  .info {
+    font-size: 1.5rem;
+    color: var(--gray-100);
+    max-width: 50rem;
+    line-height: 2.75rem;
+    margin-top: 1.875rem;
+  }
+  .sectionSubscribe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    .content {
+      h1 {
+        font-size: 5.375rem;
+        line-height: 7.063rem;
+        margin-top: 15px;
+        span {
           color: var(--purple-100);
+        }
       }
     }
-    .greeting{
-        font-size: 1.563rem;
-        line-height: 3.125rem;
-        color: var(--cyan-100);
-    }
+  }
 
-    .info{
-        font-size: 1.50rem;
-        color: var(--gray-100);
-        max-width: 37.5rem;
-        line-height: 2.75rem;
-        margin-top: 1.875rem;
+  .sectionAbout {
+    padding: 10rem 0;
+    display: flex;
+    justify-content: space-between;
+    background-image: url("../../public/images/Starts.png");
+    background-repeat: no-repeat;
+    background-position: cover;
+    .imageMe {
+      width: 31.25rem;
+      height: 31.25rem;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .apresentation {
+      h2 {
+        font-size: 2.813rem;
+        line-height: 4.375rem;
+        font-weight: bold;
+      }
+      .follow {
+        margin-top: 3rem;
+      }
+
+      .iconsSocialMedias {
+        a {
+          svg {
+            height: 3.125rem;
+            width: 3.125rem;
+          }
+          color: var(--purple-100);
+          &:nth-last-child(2n) {
+            margin: 0 2rem;
+          }
+        }
+      }
     }
   }
+}
+
+.bgLines {
+  background-image: url("../../public/images/lines.png");
+  background-repeat: no-repeat;
 }
