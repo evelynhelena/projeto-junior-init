@@ -1,21 +1,6 @@
-.container{
-    padding: 2rem 0;
-    .imageLogo{
-        height: 3.13rem;
-        width: 14.938rem;
-    }
-}
-
 .linksHeader{
     a{
         padding: 0 1rem;
         font-size:1.25rem;
-    }
-}
-
-//////////////////////////////MOBILE//////////////////////////////////
-@media screen and (max-width: 899px) {
-    .container{
-        padding: 0;
     }
 }

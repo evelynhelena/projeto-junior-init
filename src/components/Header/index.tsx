@@ -27,7 +27,11 @@ export function Header() {
     };
 
     return (
-        <AppBar position="static" color="transparent" className={styles.container}>
+        <AppBar 
+        position="static" 
+        color="transparent" 
+        sx={{ padding: "2rem 0"}}
+        >
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
                     <Typography
@@ -95,7 +99,9 @@ export function Header() {
                         ></Image>
 
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'end' } }} className={styles.linksHeader}>
+                    <Box 
+                    sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'end' } }} 
+                    className={styles.linksHeader}>
                         {pages.map((page) => (
                             <Link
                                 key={page}

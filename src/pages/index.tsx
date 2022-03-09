@@ -18,41 +18,132 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { IconsComponent } from '../components/IconsComponent';
 import { BoxInfos } from '../components/BoxInfos';
 import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
+import { styled } from '@mui/styles';
+import { Greeting } from '../components/Greeting';
+import { Info } from '../components/Info';
+
+const SectionAbout = styled(Box)({
+  padding: "10rem 0",
+  display: "flex",
+  justifyContent: "space-between",
+  backgroundImage: 'url("../../public/images/Starts.png")',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+});
+
 export default function Home() {
+
+
   return (
     <>
       <Head>
         <title>JuniorInit | Home</title>
       </Head>
-      <Container maxWidth="lg" className={styles.container}>
-        <section className={styles.sectionSubscribe}>
-          <div className={styles.content}>
-            <p className={styles.greeting}>FALA, DEV!</p>
-            <h1>Notícias sobre o <br /> mundo do <span>JavaScript</span></h1>
-            <p className={styles.info}>Inscreva-se para garantir nossas atualizações</p>
+      <Container maxWidth="lg">
+        <Box component="section" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
+          <Box>
+            <Greeting title="FALA, DEV!" componentType="span" />
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={
+                {
+                  fontSize: "5.375rem",
+                  lineHeight: "7.063rem",
+                  marginTop: "0.938rem",
+                  fontWeight: "bold"
+                }
+              }
+            >
+              Notícias sobre o <br /> mundo do
+
+              <Typography
+                variant="h1"
+                component="span"
+                sx={{ color: "var(--purple-100)", fontWeight: "bold" }}
+                pl={2}
+              >
+                JavaScript
+              </Typography>
+            </Typography>
+            <Typography
+              component="p"
+              sx={
+                {
+                  fontSize: "1.5rem",
+                  color: "var(--gray-100)",
+                  maxWidth: "50rem",
+                  lineHeight: "2.75rem",
+                  marginTop: "1.875rem"
+                }
+              }
+            >
+              Inscreva-se para garantir nossas atualizações
+            </Typography>
 
             <SubscribeButton />
-          </div>
+          </Box>
           <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
 
-        </section>
+        </Box>
       </Container>
       <section className={styles.bgLines}>
-        <Container maxWidth="lg" className={styles.container}>
-          <div className={styles.sectionAbout}>
-            <div className={styles.apresentation}>
-              <p className={styles.greeting}>Quem vós fala?</p>
-              <h2>Hello world, ops Eve!</h2>
-              <p className={styles.info}>Lorem ipsum dolor sit amet, consectetur
+        <Container maxWidth="lg">
+          <Box
+            sx={
+              {
+                padding: "10rem 0",
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundImage: 'url("../../public/images/Starts.png")',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }
+            }
+          >
+            <Box>
+
+              <Greeting title="Quem vós fala?" componentType="p" />
+
+              <Typography
+                variant="h2"
+                component="span"
+                sx={{ fontSize: "2.813rem", lineHeight: "4.375rem", fontWeight: "bold" }}
+              >
+                Hello world, ops Eve!
+              </Typography>
+
+              <Info
+                title="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit. Mi quis phasellus arcu dictum sed consequat sed lacus.
                 Diam at maecenas tellus facilisis. Faucibus urna, ultrices sed amet
-                curabitur auctor suspendisse etiam dolor. Nullam est donec semper nibh laoreet.
-              </p>
-              <p className={styles.info}>Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Mi quis phasellus arcu dictum.
-              </p>
-              <p className={`${styles.greeting} ${styles.follow}`}>Me siga nas redes!</p>
-              <div className={styles.iconsSocialMedias}>
+                curabitur auctor suspendisse etiam dolor. Nullam est donec semper nibh laoreet."
+                componentType="p"
+              />
+              <Info
+                title="Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Mi quis phasellus arcu dictum."
+                componentType="p"
+              />
+              <Greeting title="Me siga nas redes!" componentType="p"/>
+
+              <Box 
+              className={styles.iconsSocialMedias}
+              sx={
+                {
+                  a:{paddingRight: 1},
+                  svg:{
+                    height:"3.125rem",width:"3.125rem", transition: "tranform 0.5s",
+                    ":hover":{
+                      tranform: "rotate(20deg)",
+                      color: "var(--cyan-100)",
+                    }
+                  }
+                }
+              }
+              >
                 <IconsComponent slug="https://www.linkedin.com/in/evelyn-helena" section="about">
                   <LinkedInIcon />
                 </IconsComponent>
@@ -65,12 +156,12 @@ export default function Home() {
                 <IconsComponent slug="https://github.com/evelynhelena" section="about">
                   <GitHubIcon />
                 </IconsComponent>
-              </div>
-            </div>
-            <div className={styles.imageMe}>
+              </Box>
+            </Box>
+            <Box sx={{width:"31.25rem",height: "31.25rem",img:{ borderRadius: "50%"}}}>
               <Image src={me} alt="Evelyn Helena"></Image>
-            </div>
-          </div>
+            </Box>
+          </Box>
           <div className={styles.boxInfos}>
 
             <Grid container spacing={3}>
