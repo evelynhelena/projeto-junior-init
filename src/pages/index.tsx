@@ -20,18 +20,8 @@ import { BoxInfos } from '../components/BoxInfos';
 import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-import { styled } from '@mui/styles';
 import { Greeting } from '../components/Greeting';
 import { Info } from '../components/Info';
-
-const SectionAbout = styled(Box)({
-  padding: "10rem 0",
-  display: "flex",
-  justifyContent: "space-between",
-  backgroundImage: 'url("../../public/images/Starts.png")',
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center",
-});
 
 export default function Home() {
 
@@ -42,7 +32,7 @@ export default function Home() {
         <title>JuniorInit | Home</title>
       </Head>
       <Container maxWidth="lg">
-        <Box component="section" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
+        <Box component="section" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3}}>
           <Box>
             <Greeting title="FALA, DEV!" componentType="span" />
             <Typography
@@ -63,9 +53,8 @@ export default function Home() {
                 variant="h1"
                 component="span"
                 sx={{ color: "var(--purple-100)", fontWeight: "bold" }}
-                pl={2}
               >
-                JavaScript
+                {" "}JavaScript
               </Typography>
             </Typography>
             <Typography
@@ -85,11 +74,16 @@ export default function Home() {
 
             <SubscribeButton />
           </Box>
-          <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
+          <Box sx={{ display: {
+                xs: 'none', md: 'flex',
+              }}}>
+
+            <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
+          </Box>
 
         </Box>
       </Container>
-      <section className={styles.bgLines}>
+      <Box className={styles.bgLines} component="section">
         <Container maxWidth="lg">
           <Box
             sx={
@@ -97,9 +91,6 @@ export default function Home() {
                 padding: "10rem 0",
                 display: "flex",
                 justifyContent: "space-between",
-                backgroundImage: 'url("../../public/images/Starts.png")',
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
               }
             }
           >
@@ -127,22 +118,21 @@ export default function Home() {
                 elit. Mi quis phasellus arcu dictum."
                 componentType="p"
               />
-              <Greeting title="Me siga nas redes!" componentType="p"/>
+              <Greeting title="Me siga nas redes!" componentType="p" mTop={4} />
 
-              <Box 
-              className={styles.iconsSocialMedias}
-              sx={
-                {
-                  a:{paddingRight: 1},
-                  svg:{
-                    height:"3.125rem",width:"3.125rem", transition: "tranform 0.5s",
-                    ":hover":{
-                      tranform: "rotate(20deg)",
-                      color: "var(--cyan-100)",
+              <Box
+                sx={
+                  {
+                    marginTop: 1,
+                    a: { paddingRight: 1 },
+                    svg: {
+                      height: "3.125rem", width: "3.125rem",
+                      ":hover": {
+                        color: "var(--cyan-100)",
+                      }
                     }
                   }
                 }
-              }
               >
                 <IconsComponent slug="https://www.linkedin.com/in/evelyn-helena" section="about">
                   <LinkedInIcon />
@@ -158,14 +148,16 @@ export default function Home() {
                 </IconsComponent>
               </Box>
             </Box>
-            <Box sx={{width:"31.25rem",height: "31.25rem",img:{ borderRadius: "50%"}}}>
+            <Box sx={{ width: "31.25rem", height: "31.25rem", img: { borderRadius: "50%" }, display: {
+                xs: 'none', md: 'block',
+              } }}>
               <Image src={me} alt="Evelyn Helena"></Image>
             </Box>
           </Box>
-          <div className={styles.boxInfos}>
 
+          <Box>
             <Grid container spacing={3}>
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -174,7 +166,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -183,7 +175,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -192,7 +184,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -201,16 +193,27 @@ export default function Home() {
                 />
               </Grid>
             </Grid>
+          </Box>
 
-          </div>
         </Container>
-        <div className={styles.rocketFooter}>
+        <Box
+          sx={
+            {
+              position: "absolute",
+              right: 0, bottom: "-139%",
+              display: {
+                xs: 'none', md: 'flex',
+              }
+            }
+
+          }
+        >
           <Image src={rocketFooter} width={500} height={500} alt="rocket footer"></Image>
-        </div>
-        <div className={styles.astronautFooter}>
+        </Box>
+        <Box sx={{ position: "absolute", display: {xs: 'none', md: 'flex'}}}>
           <Image src={astronautFooter} width={500} height={500} alt="rocket footer"></Image>
-        </div>
-      </section>
+        </Box>
+      </Box>
     </>
   )
 }

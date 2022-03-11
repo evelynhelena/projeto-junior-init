@@ -3,9 +3,10 @@ import Typography from '@mui/material/Typography';
 interface GreetingProps {
     title: string;
     componentType: "p" | "span";
+    mTop?: number; //Tipo não obrigatório
 }
 
-export function Greeting({ title, componentType }: GreetingProps) {
+export function Greeting({ title, componentType,mTop }: GreetingProps) {
     return (
         <Typography
             component={componentType}
@@ -15,7 +16,8 @@ export function Greeting({ title, componentType }: GreetingProps) {
                         "1.563rem",
                     lineHeight: "3.125rem",
                     color: "var(--cyan-100)",
-                    textTransform: "uppercase"
+                    textTransform: "uppercase",
+                    marginTop: mTop
                 }
             }
         >
