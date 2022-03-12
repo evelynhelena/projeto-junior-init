@@ -44,6 +44,7 @@ export default function Home() {
                   lineHeight: "7.063rem",
                   marginTop: "0.938rem",
                   fontWeight: "bold",
+                  paddingRight: "10px",
                 }
               }
             >
