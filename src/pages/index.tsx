@@ -43,7 +43,7 @@ export default function Home() {
                   fontSize: "5.375rem",
                   lineHeight: "7.063rem",
                   marginTop: "0.938rem",
-                  fontWeight: "bold"
+                  fontWeight: "bold",
                 }
               }
             >

@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
-import styles from "./header.module.scss";
 import Image from 'next/image'
 import logo from '../../../public/images/logo.png';
 
@@ -27,10 +26,10 @@ export function Header() {
     };
 
     return (
-        <AppBar 
-        position="static" 
-        color="transparent" 
-        sx={{ padding: "2rem 0"}}
+        <AppBar
+            position="static"
+            color="transparent"
+            sx={{ padding: "2rem 0" }}
         >
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
@@ -99,9 +98,18 @@ export function Header() {
                         ></Image>
 
                     </Typography>
-                    <Box 
-                    sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'end' } }} 
-                    className={styles.linksHeader}>
+                    <Box
+                        sx={
+                            {
+                                flexGrow: 1, 
+                                display: { xs: 'none', md: 'flex', justifyContent: 'end' },
+                                a:{
+                                    padding: "0 1rem",
+                                    fontSize: "1.25rem"
+                                }
+                            }
+                        }
+                        >
                         {pages.map((page) => (
                             <Link
                                 key={page}
