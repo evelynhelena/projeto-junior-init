@@ -18,41 +18,112 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { IconsComponent } from '../components/IconsComponent';
 import { BoxInfos } from '../components/BoxInfos';
 import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
+import { Greeting } from '../components/Greeting';
+import { Info } from '../components/Info';
+
 export default function Home() {
+
+
   return (
     <>
       <Head>
         <title>JuniorInit | Home</title>
       </Head>
-      <Container maxWidth="lg" className={styles.container}>
-        <section className={styles.sectionSubscribe}>
-          <div className={styles.content}>
-            <p className={styles.greeting}>FALA, DEV!</p>
-            <h1>Notícias sobre o <br /> mundo do <span>JavaScript</span></h1>
-            <p className={styles.info}>Inscreva-se para garantir nossas atualizações</p>
+      <Container maxWidth="lg">
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
+          <Box>
+            <Greeting title="FALA, DEV!" componentType="span" />
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={
+                {
+                  fontSize: "5.375rem",
+                  lineHeight: "7.063rem",
+                  marginTop: "0.938rem",
+                  fontWeight: "bold",
+                  span: {
+                    color: "var(--purple-100)"
+                  }
+                }
+              }
+            >
+              Notícias sobre o <br /> mundo do <span> JavaScript</span>
+            </Typography>
+            <Typography
+              component="p"
+              sx={
+                {
+                  fontSize: "1.5rem",
+                  color: "var(--gray-100)",
+                  maxWidth: "50rem",
+                  lineHeight: "2.75rem",
+                  marginTop: "1.875rem"
+                }
+              }
+            >
+              Inscreva-se para garantir nossas atualizações
+            </Typography>
 
             <SubscribeButton />
-          </div>
-          <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
+          </Box>
+          <Box sx={{
+            display: {
+              xs: 'none', md: 'flex',
+            }
+          }}>
 
-        </section>
+            <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
+          </Box>
+
+        </Box>
       </Container>
-      <section className={styles.bgLines}>
-        <Container maxWidth="lg" className={styles.container}>
-          <div className={styles.sectionAbout}>
-            <div className={styles.apresentation}>
-              <p className={styles.greeting}>Quem vós fala?</p>
-              <h2>Hello world, ops Eve!</h2>
-              <p className={styles.info}>Lorem ipsum dolor sit amet, consectetur
+      <Box className={styles.bgLines}>
+        <Container maxWidth="lg" sx={{ marginTop: "6rem" }}>
+          <Grid container spacing="3">
+            <Grid item={true} xs={12} md={7} mb={2} pr={3}>
+
+              <Greeting title="Quem vós fala?" componentType="p" />
+
+              <Typography
+                variant="h2"
+                component="span"
+                sx={{ fontSize: "2.813rem", lineHeight: "4.375rem", fontWeight: "bold" }}
+              >
+                Hello world, ops Eve!
+              </Typography>
+
+              <Info
+                title="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit. Mi quis phasellus arcu dictum sed consequat sed lacus.
                 Diam at maecenas tellus facilisis. Faucibus urna, ultrices sed amet
-                curabitur auctor suspendisse etiam dolor. Nullam est donec semper nibh laoreet.
-              </p>
-              <p className={styles.info}>Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Mi quis phasellus arcu dictum.
-              </p>
-              <p className={`${styles.greeting} ${styles.follow}`}>Me siga nas redes!</p>
-              <div className={styles.iconsSocialMedias}>
+                curabitur auctor suspendisse etiam dolor. Nullam est donec semper nibh laoreet."
+                componentType="p"
+              />
+              <Info
+                title="Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Mi quis phasellus arcu dictum."
+                componentType="p"
+              />
+              <Greeting title="Me siga nas redes!" componentType="p" mTop={4} />
+
+              <Box
+                sx={
+                  {
+                    marginTop: 1,
+                    marginBottom: 5,
+                    a: { paddingRight: 1 },
+                    svg: {
+                      height: "3.125rem", width: "3.125rem",
+                      ":hover": {
+                        color: "var(--cyan-100)",
+                      }
+                    }
+                  }
+                }
+              >
                 <IconsComponent slug="https://www.linkedin.com/in/evelyn-helena" section="about">
                   <LinkedInIcon />
                 </IconsComponent>
@@ -65,16 +136,25 @@ export default function Home() {
                 <IconsComponent slug="https://github.com/evelynhelena" section="about">
                   <GitHubIcon />
                 </IconsComponent>
-              </div>
-            </div>
-            <div className={styles.imageMe}>
+              </Box>
+            </Grid>
+            <Grid xs={12} md={5} sx=
+              {
+                {
+                  width: "31.25rem",
+                  height: "31.25rem",
+                  img: { borderRadius: "15%" },
+                  marginBottom: "10rem"
+                }
+              }
+            >
               <Image src={me} alt="Evelyn Helena"></Image>
-            </div>
-          </div>
-          <div className={styles.boxInfos}>
+            </Grid>
+          </Grid>
 
+          <Box>
             <Grid container spacing={3}>
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -83,7 +163,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -92,7 +172,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -101,7 +181,7 @@ export default function Home() {
                 />
               </Grid>
 
-              <Grid xs={12} md={6} mb={3} pr={3} pl={3}>
+              <Grid item={true} xs={12} md={6}>
                 <BoxInfos
                   title="Conteúdos práticos"
                   content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
@@ -110,16 +190,40 @@ export default function Home() {
                 />
               </Grid>
             </Grid>
+          </Box>
 
-          </div>
         </Container>
-        <div className={styles.rocketFooter}>
-          <Image src={rocketFooter} width={500} height={500} alt="rocket footer"></Image>
-        </div>
-        <div className={styles.astronautFooter}>
-          <Image src={astronautFooter} width={500} height={500} alt="rocket footer"></Image>
-        </div>
-      </section>
+        <Box
+          sx={
+            {
+              width: "300px",
+              height: "300px",
+              position: "absolute",
+              right: 0, bottom: "-135%",
+              display: {
+                xs: 'none',
+                md: 'flex',
+              }
+            }
+
+          }
+        >
+
+          <Image src={rocketFooter} alt="rocket footer"></Image>
+        </Box>
+        <Box
+          sx={
+            {
+              width: "300px",
+              height: "300px",
+              position: "absolute",
+              display: { xs: 'none', md: 'flex' }
+            }
+          }
+        >
+          <Image src={astronautFooter} alt="rocket footer"></Image>
+        </Box>
+      </Box>
     </>
   )
 }
