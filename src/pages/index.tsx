@@ -82,7 +82,7 @@ export default function Home() {
       </Container>
       <Box className={styles.bgLines}>
         <Container maxWidth="lg" sx={{ marginTop: "6rem" }}>
-          <Grid container spacing="3">
+          <Grid container spacing="3" item={true}>
             <Grid item={true} xs={12} md={7} mb={2} pr={3}>
 
               <Greeting title="Quem vós fala?" componentType="p" />
@@ -138,7 +138,7 @@ export default function Home() {
                 </IconsComponent>
               </Box>
             </Grid>
-            <Grid xs={12} md={5} sx=
+            <Grid item={true} xs={12} md={5} sx=
               {
                 {
                   width: "31.25rem",
