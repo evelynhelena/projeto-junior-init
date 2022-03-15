@@ -32,7 +32,7 @@ export default function Home() {
         <title>JuniorInit | Home</title>
       </Head>
       <Container maxWidth="lg">
-        <Box component="section" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3}}>
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
           <Box>
             <Greeting title="FALA, DEV!" componentType="span" />
             <Typography
@@ -44,19 +44,13 @@ export default function Home() {
                   lineHeight: "7.063rem",
                   marginTop: "0.938rem",
                   fontWeight: "bold",
-                  paddingRight: "10px",
+                  span: {
+                    color: "var(--purple-100)"
+                  }
                 }
               }
             >
-              Notícias sobre o <br /> mundo do
-
-              <Typography
-                variant="h1"
-                component="span"
-                sx={{ color: "var(--purple-100)", fontWeight: "bold" }}
-              >
-                {" "}JavaScript
-              </Typography>
+              Notícias sobre o <br /> mundo do <span> JavaScript</span>
             </Typography>
             <Typography
               component="p"
@@ -75,27 +69,21 @@ export default function Home() {
 
             <SubscribeButton />
           </Box>
-          <Box sx={{ display: {
-                xs: 'none', md: 'flex',
-              }}}>
+          <Box sx={{
+            display: {
+              xs: 'none', md: 'flex',
+            }
+          }}>
 
             <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
           </Box>
 
         </Box>
       </Container>
-      <Box className={styles.bgLines} component="section">
-        <Container maxWidth="lg">
-          <Box
-            sx={
-              {
-                padding: "10rem 0",
-                display: "flex",
-                justifyContent: "space-between",
-              }
-            }
-          >
-            <Box>
+      <Box className={styles.bgLines}>
+        <Container maxWidth="lg" sx={{ marginTop: "6rem" }}>
+          <Grid container spacing="3">
+            <Grid item={true} xs={12} md={7} mb={2} pr={3}>
 
               <Greeting title="Quem vós fala?" componentType="p" />
 
@@ -125,6 +113,7 @@ export default function Home() {
                 sx={
                   {
                     marginTop: 1,
+                    marginBottom: 5,
                     a: { paddingRight: 1 },
                     svg: {
                       height: "3.125rem", width: "3.125rem",
@@ -148,13 +137,20 @@ export default function Home() {
                   <GitHubIcon />
                 </IconsComponent>
               </Box>
-            </Box>
-            <Box sx={{ width: "31.25rem", height: "31.25rem", img: { borderRadius: "50%" }, display: {
-                xs: 'none', md: 'block',
-              } }}>
+            </Grid>
+            <Grid xs={12} md={5} sx=
+              {
+                {
+                  width: "31.25rem",
+                  height: "31.25rem",
+                  img: { borderRadius: "15%" },
+                  marginBottom: "10rem"
+                }
+              }
+            >
               <Image src={me} alt="Evelyn Helena"></Image>
-            </Box>
-          </Box>
+            </Grid>
+          </Grid>
 
           <Box>
             <Grid container spacing={3}>
@@ -200,19 +196,32 @@ export default function Home() {
         <Box
           sx={
             {
+              width: "300px",
+              height: "300px",
               position: "absolute",
-              right: 0, bottom: "-139%",
+              right: 0, bottom: "-135%",
               display: {
-                xs: 'none', md: 'flex',
+                xs: 'none',
+                md: 'flex',
               }
             }
 
           }
         >
-          <Image src={rocketFooter} width={500} height={500} alt="rocket footer"></Image>
+
+          <Image src={rocketFooter} alt="rocket footer"></Image>
         </Box>
-        <Box sx={{ position: "absolute", display: {xs: 'none', md: 'flex'}}}>
-          <Image src={astronautFooter} width={500} height={500} alt="rocket footer"></Image>
+        <Box
+          sx={
+            {
+              width: "300px",
+              height: "300px",
+              position: "absolute",
+              display: { xs: 'none', md: 'flex' }
+            }
+          }
+        >
+          <Image src={astronautFooter} alt="rocket footer"></Image>
         </Box>
       </Box>
     </>
