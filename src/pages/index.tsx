@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { GetStaticProps } from "next"
 import Container from '@mui/material/Container';
 import rocket from '../../public/images/rocket.gif';
 import rocketFooter from '../../public/images/rocketFooter.gif';
@@ -22,10 +23,25 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { Greeting } from '../components/Greeting';
 import { Info } from '../components/Info';
+import { getPrismicClient } from '../services/prismic';
+import Prismic from "@prismicio/client";
+import { RichText } from "prismic-dom";
 
-export default function Home() {
+interface HomeContent {
+  slug: string;
+  greeting: string;
+  title: string;
+  titleDiferentColor: string;
+  call: string;
+  urlImge: string;
+}
 
+interface HomeProps {
+  homeContent:HomeContent[]
+}
 
+export default function Home({homeContent}: HomeProps) {
+  const data = homeContent[0];
   return (
     <>
       <Head>
@@ -34,7 +50,7 @@ export default function Home() {
       <Container maxWidth="lg">
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
           <Box>
-            <Greeting title="FALA, DEV!" componentType="span" />
+            <Greeting title={data.greeting} componentType="span" />
             <Typography
               variant="h1"
               component="h1"
@@ -50,7 +66,7 @@ export default function Home() {
                 }
               }
             >
-              Notícias sobre o <br /> mundo do <span> JavaScript</span>
+              {data.title} <br/><span> {data.titleDiferentColor}</span>
             </Typography>
             <Typography
               component="p"
@@ -64,7 +80,7 @@ export default function Home() {
                 }
               }
             >
-              Inscreva-se para garantir nossas atualizações
+              {data.call}
             </Typography>
 
             <SubscribeButton />
@@ -226,4 +242,35 @@ export default function Home() {
       </Box>
     </>
   )
+}
+
+interface HomeData {
+  id: string;
+  data: {
+    title: string;
+    titleDiferentColor: string;
+    call: string;
+  }
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+  const response = await prismic.query<any>([
+    Prismic.predicates.at('document.type', 'home')
+  ], {
+    pageSize: 100,
+  });
+
+  const homeContent = response.results.map(hc => {
+    return {
+      slug: hc.id,
+      greeting: hc.data.greeting[0].text,
+      title: hc.data.title[0].text,
+      titleDiferentColor: hc.data.titlecolor[0].text,
+      call: hc.data.call[0].text,
+      urlImge: hc.data.rocketprinciple.url
+    }
+  })
+
+  return { props: {homeContent} }
 }
