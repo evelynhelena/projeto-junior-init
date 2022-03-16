@@ -1,25 +1,24 @@
-import Typography from '@mui/material/Typography';
+
+import { Box } from "@mui/material";
 
 interface InfoProps {
     title: string;
-    componentType: "p" | "span";
 }
 
 
-export function Info({ title, componentType }: InfoProps) {
+export function Paragraph({ title }: InfoProps) {
     return (
-        <Typography
+        <Box
             sx={
                 {
                     fontSize: "1.5rem",
                     color: "var(--gray-100)",
-                    maxWidth: "50rem",
                     lineHeight: "2.75rem",
                     marginTop: "1.875rem"
                 }
             }
+            dangerouslySetInnerHTML = {{__html: title}}
         >
-            {title}
-        </Typography>
+        </Box>
     )
 }

@@ -22,7 +22,7 @@ import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { Greeting } from '../components/Greeting';
-import { Info } from '../components/Info';
+import { Paragraph } from '../components/Paragraph';
 import { getPrismicClient } from '../services/prismic';
 import Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
@@ -34,14 +34,25 @@ interface HomeContent {
   titleDiferentColor: string;
   call: string;
   urlImge: string;
+  abouttext: string;
+  folow: string;
+  apresentation: string;
+  myname: string;
 }
 
 interface HomeProps {
-  homeContent:HomeContent[]
+  homeContent:HomeContent[];
+  cardContent:CardProps[];
 }
 
-export default function Home({homeContent}: HomeProps) {
+interface CardProps{
+  titlecard: string;
+  cardcontent: string;
+}
+
+export default function Home({homeContent,cardContent}: HomeProps) {
   const data = homeContent[0];
+  console.log(cardContent);
   return (
     <>
       <Head>
@@ -101,29 +112,21 @@ export default function Home({homeContent}: HomeProps) {
           <Grid container spacing="3" item={true}>
             <Grid item={true} xs={12} md={7} mb={2} pr={3}>
 
-              <Greeting title="Quem vós fala?" componentType="p" />
+              <Greeting title={data.apresentation} componentType="p" />
 
               <Typography
                 variant="h2"
                 component="span"
                 sx={{ fontSize: "2.813rem", lineHeight: "4.375rem", fontWeight: "bold" }}
               >
-                Hello world, ops Eve!
+                {data.myname}
               </Typography>
 
-              <Info
-                title="Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Mi quis phasellus arcu dictum sed consequat sed lacus.
-                Diam at maecenas tellus facilisis. Faucibus urna, ultrices sed amet
-                curabitur auctor suspendisse etiam dolor. Nullam est donec semper nibh laoreet."
-                componentType="p"
+            <Paragraph
+                title={data.abouttext}
               />
-              <Info
-                title="Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Mi quis phasellus arcu dictum."
-                componentType="p"
-              />
-              <Greeting title="Me siga nas redes!" componentType="p" mTop={4} />
+          
+              <Greeting title={data.folow} componentType="p" mTop={4} />
 
               <Box
                 sx={
@@ -244,13 +247,14 @@ export default function Home({homeContent}: HomeProps) {
   )
 }
 
-interface HomeData {
-  id: string;
-  data: {
-    title: string;
-    titleDiferentColor: string;
-    call: string;
-  }
+interface CardData {
+  text: string;
+  titlecard: CardData[];
+  cardcontent: CardData[];
+}
+
+interface CardData {
+  text:string;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -261,6 +265,8 @@ export const getStaticProps: GetStaticProps = async () => {
     pageSize: 100,
   });
 
+  console.log(response.results[0].data.cards)
+
   const homeContent = response.results.map(hc => {
     return {
       slug: hc.id,
@@ -268,9 +274,22 @@ export const getStaticProps: GetStaticProps = async () => {
       title: hc.data.title[0].text,
       titleDiferentColor: hc.data.titlecolor[0].text,
       call: hc.data.call[0].text,
-      urlImge: hc.data.rocketprinciple.url
+      urlImge: hc.data.rocketprinciple.url,
+      abouttext: RichText.asHtml(hc.data.abouttext),
+      folow: hc.data.folow[0].text,
+      apresentation: hc.data.apresentation[0].text,
+      myname: hc.data.myname[0].text,
     }
   })
 
-  return { props: {homeContent} }
+  const cardContent = response.results[0].data.cards.map((card:CardData) => {
+    return { 
+      titlecard: card.titlecard[0].text,
+      cordContent: card.cardcontent[0].text,
+    }
+  })
+
+  console.log(cardContent);
+
+  return { props: {homeContent,cardContent} }
 }
