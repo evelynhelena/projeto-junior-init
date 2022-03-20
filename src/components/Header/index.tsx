@@ -12,7 +12,17 @@ import Link from 'next/link';
 import Image from 'next/image'
 import logo from '../../../public/images/logo.png';
 
-const pages = ['Sobre', 'Tutoriais', 'Blog'];
+const pages = [
+    {
+        page: "Sobre", link: "/",
+    },
+    {
+        page: "Tutoriais", link: "/construction",
+    },
+    {
+        page: "Blog", link: "/construction",
+    }
+]
 
 export function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -77,8 +87,8 @@ export function Header() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.page} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page.page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -101,21 +111,24 @@ export function Header() {
                     <Box
                         sx={
                             {
-                                flexGrow: 1, 
+                                flexGrow: 1,
                                 display: { xs: 'none', md: 'flex', justifyContent: 'end' },
-                                a:{
+                                a: {
                                     padding: "0 1rem",
-                                    fontSize: "1.25rem"
+                                    fontSize: "1.25rem",
+                                    ":hover": {
+                                        color: "var(--cyan-100)",
+                                    }
                                 }
                             }
                         }
-                        >
+                    >
                         {pages.map((page) => (
                             <Link
-                                key={page}
-                                href="#"
+                                key={page.page}
+                                href={page.link}
                             >
-                                <a>{page}</a>
+                                <a>{page.page}</a>
                             </Link>
                         ))}
                     </Box>

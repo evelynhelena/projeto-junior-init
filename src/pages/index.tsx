@@ -1,14 +1,8 @@
 import Head from 'next/head';
 import { GetStaticProps } from "next"
 import Container from '@mui/material/Container';
-import rocket from '../../public/images/rocket.gif';
 import rocketFooter from '../../public/images/rocketFooter.gif';
 import astronautFooter from '../../public/images/astronautFooter.gif';
-import me from '../../public/images/me.jpeg';
-import book from '../../public/images/book.svg';
-import people from '../../public/images/people.svg';
-import computer from '../../public/images/computer.svg';
-import tag from '../../public/images/tag.svg';
 import Image from 'next/image';
 import styles from '../styles/home.module.scss';
 import { SubscribeButton } from '../components/SubscribeButton';
@@ -33,26 +27,30 @@ interface HomeContent {
   title: string;
   titleDiferentColor: string;
   call: string;
-  urlImge: string;
+  urlImage: string;
   abouttext: string;
   folow: string;
   apresentation: string;
   myname: string;
+  imageMe: string;
 }
 
 interface HomeProps {
-  homeContent:HomeContent[];
-  cardContent:CardProps[];
+  homeContent: HomeContent[];
+  cardData: CardProps[];
 }
 
-interface CardProps{
+interface CardProps {
   titlecard: string;
-  cardcontent: string;
+  cardContent: string;
+  iconFile: string;
+  alt: string;
+  id: number;
 }
 
-export default function Home({homeContent,cardContent}: HomeProps) {
+export default function Home({ homeContent, cardData }: HomeProps) {
   const data = homeContent[0];
-  console.log(cardContent);
+  console.log(data)
   return (
     <>
       <Head>
@@ -77,7 +75,7 @@ export default function Home({homeContent,cardContent}: HomeProps) {
                 }
               }
             >
-              {data.title} <br/><span> {data.titleDiferentColor}</span>
+              {data.title} <br /><span> {data.titleDiferentColor}</span>
             </Typography>
             <Typography
               component="p"
@@ -102,7 +100,7 @@ export default function Home({homeContent,cardContent}: HomeProps) {
             }
           }}>
 
-            <Image src={rocket} alt="Foguete" height={500} width={500}></Image>
+            <Image src={data.urlImage} alt="Foguete" height={500} width={500}></Image>
           </Box>
 
         </Box>
@@ -122,10 +120,10 @@ export default function Home({homeContent,cardContent}: HomeProps) {
                 {data.myname}
               </Typography>
 
-            <Paragraph
+              <Paragraph
                 title={data.abouttext}
               />
-          
+
               <Greeting title={data.folow} componentType="p" mTop={4} />
 
               <Box
@@ -160,54 +158,27 @@ export default function Home({homeContent,cardContent}: HomeProps) {
             <Grid item={true} xs={12} md={5} sx=
               {
                 {
-                  width: "31.25rem",
-                  height: "31.25rem",
                   img: { borderRadius: "15%" },
                   marginBottom: "10rem"
                 }
               }
             >
-              <Image src={me} alt="Evelyn Helena"></Image>
+              <Image src={data.imageMe} width={500} height={500} alt="Evelyn Helena"></Image>
             </Grid>
           </Grid>
 
           <Box>
             <Grid container spacing={3}>
-              <Grid item={true} xs={12} md={6}>
-                <BoxInfos
-                  title="Conteúdos práticos"
-                  content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
-                  path={book}
-                  altImg="Icone de livro"
-                />
-              </Grid>
-
-              <Grid item={true} xs={12} md={6}>
-                <BoxInfos
-                  title="Conteúdos práticos"
-                  content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
-                  path={people}
-                  altImg="Icone de livro"
-                />
-              </Grid>
-
-              <Grid item={true} xs={12} md={6}>
-                <BoxInfos
-                  title="Conteúdos práticos"
-                  content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
-                  path={computer}
-                  altImg="Icone de livro"
-                />
-              </Grid>
-
-              <Grid item={true} xs={12} md={6}>
-                <BoxInfos
-                  title="Conteúdos práticos"
-                  content="Todas as aulas são focadas no que realmente importa na hora de desenvolver um projeto real."
-                  path={tag}
-                  altImg="Icone de livro"
-                />
-              </Grid>
+              {cardData.map(card => (
+                <Grid item={true} xs={12} md={6} key={card.id}>
+                  <BoxInfos
+                    title={card.titlecard}
+                    content={card.cardContent}
+                    path={card.iconFile}
+                    altImg={card.alt}
+                  />
+                </Grid>
+              ))}
             </Grid>
           </Box>
 
@@ -254,7 +225,12 @@ interface CardData {
 }
 
 interface CardData {
-  text:string;
+  text: string;
+  iconfile: {
+    url: string;
+    alt: string;
+    id: number;
+  };
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -265,31 +241,32 @@ export const getStaticProps: GetStaticProps = async () => {
     pageSize: 100,
   });
 
-  console.log(response.results[0].data.cards)
-
   const homeContent = response.results.map(hc => {
+    console.log(hc)
     return {
       slug: hc.id,
       greeting: hc.data.greeting[0].text,
       title: hc.data.title[0].text,
       titleDiferentColor: hc.data.titlecolor[0].text,
       call: hc.data.call[0].text,
-      urlImge: hc.data.rocketprinciple.url,
+      urlImage: hc.data.rocketprinciple.url,
       abouttext: RichText.asHtml(hc.data.abouttext),
       folow: hc.data.folow[0].text,
       apresentation: hc.data.apresentation[0].text,
       myname: hc.data.myname[0].text,
+      imageMe: hc.data.imageme.url,
     }
   })
 
-  const cardContent = response.results[0].data.cards.map((card:CardData) => {
-    return { 
+  const cardData = response.results[0].data.cards.map((card: CardData, index: number) => {
+    return {
       titlecard: card.titlecard[0].text,
-      cordContent: card.cardcontent[0].text,
+      cardContent: card.cardcontent[0].text,
+      iconFile: card.iconfile.url,
+      alt: card.iconfile.alt,
+      id: index,
     }
   })
 
-  console.log(cardContent);
-
-  return { props: {homeContent,cardContent} }
+  return { props: { homeContent, cardData } }
 }

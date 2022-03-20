@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Box, Typography } from '@mui/material';
 
 interface BoxInfosProps {
-    path: StaticImageData;
+    path: string;
     title: string;
     content: string;
     altImg: string;
@@ -23,7 +23,7 @@ export function BoxInfos({ path, title, content, altImg }: BoxInfosProps) {
                 }
             }
             >
-                <Image alt={altImg} src={path} width={46} height={40.77}></Image>
+               <Image alt={altImg} src={path} width={46} height={40.77}></Image>
             </Box>
             <Typography variant="h2"
                 sx={
