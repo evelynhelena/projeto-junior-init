@@ -10,7 +10,7 @@ interface BoxInfosProps {
 
 export function BoxInfos({ path, title, content, altImg }: BoxInfosProps) {
 	return (
-		<Box sx={{ padding: 3, backgroundColor: "var(--black-800)", borderRadius: 3 }}>
+		<Box sx={{ padding: 3, backgroundColor: "var(--black-800)", borderRadius: 3 , height:"100%"}}>
 			<Box sx={
 				{
 					backgroundColor: "var(--purple-100)",
