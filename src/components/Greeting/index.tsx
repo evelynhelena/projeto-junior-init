@@ -1,4 +1,4 @@
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 
 interface GreetingProps {
     title: string;
@@ -7,21 +7,21 @@ interface GreetingProps {
 }
 
 export function Greeting({ title, componentType,mTop }: GreetingProps) {
-    return (
-        <Typography
-            component={componentType}
-            sx={
-                {
-                    fontSize:
+	return (
+		<Typography
+			component={componentType}
+			sx={
+				{
+					fontSize:
                         "1.563rem",
-                    lineHeight: "3.125rem",
-                    color: "var(--cyan-100)",
-                    textTransform: "uppercase",
-                    marginTop: mTop
-                }
-            }
-        >
-            {title}
-        </Typography>
-    )
+					lineHeight: "3.125rem",
+					color: "var(--cyan-100)",
+					textTransform: "uppercase",
+					marginTop: mTop
+				}
+			}
+		>
+			{title}
+		</Typography>
+	);
 }
