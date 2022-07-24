@@ -51,7 +51,6 @@ interface CardProps {
 
 export default function Home({ homeContent, cardData }: HomeProps) {
 	const data = homeContent[0];
-	console.log(data);
 	return (
 		<>
 			<Head>
@@ -244,7 +243,6 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 
 	const homeContent = response.results.map(hc => {
-		console.log(hc);
 		return {
 			slug: hc.id,
 			greeting: hc.data.greeting[0].text,
