@@ -18,10 +18,10 @@ const pages = [
 		page: "Sobre", link: "/",
 	},
 	{
-		page: "Tutoriais", link: "/construction",
+		page: "Tutoriais", link: "construction/construction",
 	},
 	{
-		page: "Blog", link: "/construction",
+		page: "Blog", link: "construction/construction",
 	}
 ];
 
