@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+
+import { BoxImageStyled, BoxStyled, TypographyContentSyled, TypographyTitleSyled} from "./styles";
 
 interface BoxInfosProps {
     path: string;
@@ -10,41 +11,16 @@ interface BoxInfosProps {
 
 export function BoxInfos({ path, title, content, altImg }: BoxInfosProps) {
 	return (
-		<Box sx={{ padding: 3, backgroundColor: "var(--black-800)", borderRadius: 3 , height:"100%"}}>
-			<Box sx={
-				{
-					backgroundColor: "var(--purple-100)",
-					display: "flex",
-					width: "3.875rem",
-					height: "3.875rem",
-					justifyContent: "center",
-					alignItems: "center",
-					borderRadius: "50%",
-				}
-			}
-			>
+		<BoxStyled>
+			<BoxImageStyled>
 				<Image alt={altImg} src={path} width={46} height={40.77}></Image>
-			</Box>
-			<Typography variant="h2"
-				sx={
-					{
-						fontSize: "2.188rem",
-						lineHeight: "5rem"
-					}
-				}
-			>
+			</BoxImageStyled>
+			<TypographyTitleSyled variant="h2">
 				{title}
-			</Typography>
-			<Typography component="p"  sx={
-				{
-					fontSize:"1.2rem",
-					lineHeight: 2, 
-					fontWeight:300
-
-				}
-			}>
+			</TypographyTitleSyled>
+			<TypographyContentSyled component="p">
 				{content}
-			</Typography>
-		</Box>
+			</TypographyContentSyled>
+		</BoxStyled>
 	);
 }
