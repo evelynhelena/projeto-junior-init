@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const SubscribeButtonStyled = styled(Button)({
-	marginTop: 3,
+	marginTop: "3rem",
 	width: "18.75rem",
 	fontSize: "1.25rem",
 	height: "5rem",

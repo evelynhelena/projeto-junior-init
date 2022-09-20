@@ -3,12 +3,12 @@ import { GreetingStyled } from "./styles";
 interface GreetingProps {
     title: string;
     componentType: "p" | "span";
-    mTop?: number; 
+    mtop?: string; 
 }
 
-export function Greeting({ title, componentType ,mTop}: GreetingProps) {
+export function Greeting({ title, componentType ,mtop}: GreetingProps) {
 	return (
-		<GreetingStyled component={componentType} mTop={mTop}>
+		<GreetingStyled component={componentType} mtop={mtop}>
 			{title}
 		</GreetingStyled>
 	);

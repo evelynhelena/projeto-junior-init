@@ -33,7 +33,7 @@ export const TypographyContentSyled = styled(Typography, {
 
 	shouldForwardProp: (prop) =>
 		prop !== "color" && prop !== "variant" && prop !== "sx",
-	name: "MyThemeComponent",
+	name: "GreetingStyledProps",
 	slot: "Root",
 })<GreetingStyledProps>(() => ({
 	fontSize:"1.2rem",

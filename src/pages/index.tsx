@@ -20,7 +20,9 @@ import { IconsComponent } from "../components/IconsComponent";
 import { Paragraph } from "../components/Paragraph";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { getPrismicClient } from "../services/prismic";
+import { BgLinesStyled } from "../styles/GlobalStyles";
 import styles from "../styles/home.module.scss";
+import { BoxAboutBlogStyled, SubscribeInfoStyled, TypographyAboutBlogStyled } from "./style/homeStyle";
 
 interface HomeContent {
   slug: string;
@@ -57,40 +59,15 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 				<title>JuniorInit | Home</title>
 			</Head>
 			<Container maxWidth="lg">
-				<Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 3 }}>
+				<BoxAboutBlogStyled>
 					<Box>
 						<Greeting title={data.greeting} componentType="span" />
-						<Typography
-							variant="h1"
-							component="h1"
-							sx={
-								{
-									fontSize: "5.375rem",
-									lineHeight: "7.063rem",
-									marginTop: "0.938rem",
-									fontWeight: "bold",
-									span: {
-										color: "var(--purple-100)"
-									}
-								}
-							}
-						>
+						<TypographyAboutBlogStyled variant="h1">
 							{data.title} <br /><span> {data.titleDiferentColor}</span>
-						</Typography>
-						<Typography
-							component="p"
-							sx={
-								{
-									fontSize: "1.5rem",
-									color: "var(--gray-100)",
-									maxWidth: "50rem",
-									lineHeight: "2.75rem",
-									marginTop: "1.875rem"
-								}
-							}
-						>
+						</TypographyAboutBlogStyled>
+						<SubscribeInfoStyled component="p">
 							{data.call}
-						</Typography>
+						</SubscribeInfoStyled>
 
 						<SubscribeButton />
 					</Box>
@@ -103,9 +80,9 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 						<Image src={data.urlImage} alt="Foguete" height={500} width={500}></Image>
 					</Box>
 
-				</Box>
+				</BoxAboutBlogStyled>
 			</Container>
-			<Box className={styles.bgLines}>
+			<BgLinesStyled>
 				<Container maxWidth="lg" sx={{ marginTop: "6rem" }}>
 					<Grid container spacing="3" item={true}>
 						<Grid item={true} xs={12} md={7} mb={2} pr={3}>
@@ -124,7 +101,7 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 								title={data.abouttext}
 							/>
 
-							<Greeting title={data.folow} componentType="p" mTop={4} />
+							<Greeting title={data.folow} componentType="p" mtop="4rem"/>
 
 							<Box
 								sx={
@@ -213,7 +190,7 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 				>
 					<Image src={astronautFooter} alt="rocket footer"></Image>
 				</Box>
-			</Box>
+			</BgLinesStyled>
 		</>
 	);
 }
