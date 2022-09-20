@@ -21,8 +21,7 @@ import { Paragraph } from "../components/Paragraph";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { getPrismicClient } from "../services/prismic";
 import { BgLinesStyled } from "../styles/GlobalStyles";
-import styles from "../styles/home.module.scss";
-import { BoxAboutBlogStyled, SubscribeInfoStyled, TypographyAboutBlogStyled } from "./style/homeStyle";
+import { BoxAboutBlogStyled, SubscribeInfoStyled, TypographyAboutBlogStyled } from "../styles/homeStyle";
 
 interface HomeContent {
   slug: string;

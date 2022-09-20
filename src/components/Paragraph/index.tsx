@@ -1,6 +1,3 @@
-
-import { Box } from "@mui/material";
-
 import { ParagraphStyled } from "./styles";
 
 interface InfoProps {

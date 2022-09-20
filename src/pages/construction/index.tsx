@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import construction from "../../../public/images/screwdriver.gif";
-import { BoxStyled, TypographyStyled } from "./styles";
+import { BoxStyled, TypographyStyled } from "../../styles/constructionStyles";
 export default function Contruction() {
 	return (
 		<BoxStyled>
