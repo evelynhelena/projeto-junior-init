@@ -4,7 +4,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Grid } from "@mui/material";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import Prismic from "@prismicio/client";
 import { GetStaticProps } from "next";
@@ -21,7 +20,7 @@ import { Paragraph } from "../components/Paragraph";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { getPrismicClient } from "../services/prismic";
 import { BgLinesStyled } from "../styles/GlobalStyles";
-import { BoxAboutBlogStyled, SubscribeInfoStyled, TypographyAboutBlogStyled } from "../styles/homeStyle";
+import { BoxAboutBlogStyled, BoxImageAstronautStyled, BoxImageRocketStyled, BoxSocialmidiasStyled, ContainerStyled, GridImageMeStyled, SubscribeInfoStyled, TypographyAboutBlogStyled, TypographyMyNameStyled } from "../styles/homeStyle";
 
 interface HomeContent {
   slug: string;
@@ -82,19 +81,15 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 				</BoxAboutBlogStyled>
 			</Container>
 			<BgLinesStyled>
-				<Container maxWidth="lg" sx={{ marginTop: "6rem" }}>
+				<ContainerStyled maxWidth="lg">
 					<Grid container spacing="3" item={true}>
 						<Grid item={true} xs={12} md={7} mb={2} pr={3}>
 
 							<Greeting title={data.apresentation} componentType="p" />
 
-							<Typography
-								variant="h2"
-								component="span"
-								sx={{ fontSize: "2.813rem", lineHeight: "4.375rem", fontWeight: "bold" }}
-							>
+							<TypographyMyNameStyled variant="h2">
 								{data.myname}
-							</Typography>
+							</TypographyMyNameStyled>
 
 							<Paragraph
 								title={data.abouttext}
@@ -102,21 +97,7 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 
 							<Greeting title={data.folow} componentType="p" mtop="4rem"/>
 
-							<Box
-								sx={
-									{
-										marginTop: 1,
-										marginBottom: 5,
-										a: { paddingRight: 1 },
-										svg: {
-											height: "3.125rem", width: "3.125rem",
-											":hover": {
-												color: "var(--cyan-100)",
-											}
-										}
-									}
-								}
-							>
+							<BoxSocialmidiasStyled>
 								<IconsComponent slug="https://www.linkedin.com/in/evelyn-helena" section="about">
 									<LinkedInIcon />
 								</IconsComponent>
@@ -129,18 +110,11 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 								<IconsComponent slug="https://github.com/evelynhelena" section="about">
 									<GitHubIcon />
 								</IconsComponent>
-							</Box>
+							</BoxSocialmidiasStyled>
 						</Grid>
-						<Grid item={true} xs={12} md={5} sx=
-							{
-								{
-									img: { borderRadius: "15%" },
-									marginBottom: "10rem"
-								}
-							}
-						>
+						<GridImageMeStyled item={true} xs={12} md={5}>
 							<Image src={data.imageMe} width={500} height={500} alt="Evelyn Helena"></Image>
-						</Grid>
+						</GridImageMeStyled>
 					</Grid>
 
 					<Box>
@@ -158,37 +132,14 @@ export default function Home({ homeContent, cardData }: HomeProps) {
 						</Grid>
 					</Box>
 
-				</Container>
-				<Box
-					sx={
-						{
-							width: "300px",
-							height: "300px",
-							position: "absolute",
-							right: 0, bottom: "-135%",
-							display: {
-								xs: "none",
-								md: "flex",
-							}
-						}
-
-					}
-				>
-
-					<Image src={rocketFooter} alt="rocket footer"></Image>
-				</Box>
-				<Box
-					sx={
-						{
-							width: "300px",
-							height: "300px",
-							position: "absolute",
-							display: { xs: "none", md: "flex" }
-						}
-					}
-				>
-					<Image src={astronautFooter} alt="rocket footer"></Image>
-				</Box>
+				</ContainerStyled>
+				<BoxImageRocketStyled sx={{	display: {xs: "none", md: "flex",}}}>
+					<Image src={rocketFooter} alt="Rocket footer"></Image>
+				</BoxImageRocketStyled>
+				
+				<BoxImageAstronautStyled sx={{display: { xs: "none", md: "flex" }}}>
+					<Image src={astronautFooter} alt="Astronaut footer"></Image>
+				</BoxImageAstronautStyled>
 			</BgLinesStyled>
 		</>
 	);
