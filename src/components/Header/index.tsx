@@ -1,5 +1,4 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
@@ -12,6 +11,7 @@ import Link from "next/link";
 import * as React from "react";
 
 import logo from "../../../public/images/logo.png";
+import { AppBarStyled, BoxLinkStyled } from "./styles";
 
 const pages = [
 	{
@@ -37,10 +37,9 @@ export function Header() {
 	};
 
 	return (
-		<AppBar
+		<AppBarStyled
 			position="static"
 			color="transparent"
-			sx={{ padding: "2rem 0" }}
 		>
 			<Container maxWidth="lg">
 				<Toolbar disableGutters>
@@ -62,7 +61,7 @@ export function Header() {
 						<IconButton
 							size="large"
 							aria-label="account of current user"
-							aria-controls="menu-appbar"
+							aria-controls="menu-AppBarStyled"
 							aria-haspopup="true"
 							onClick={handleOpenNavMenu}
 							color="inherit"
@@ -109,20 +108,8 @@ export function Header() {
 						></Image>
 
 					</Typography>
-					<Box
-						sx={
-							{
-								flexGrow: 1,
-								display: { xs: "none", md: "flex", justifyContent: "end" },
-								a: {
-									padding: "0 1rem",
-									fontSize: "1.25rem",
-									":hover": {
-										color: "var(--cyan-100)",
-									}
-								}
-							}
-						}
+					<BoxLinkStyled
+						sx={{display: { xs: "none", md: "flex", justifyContent: "end" }}}
 					>
 						{pages.map((page) => (
 							<Link
@@ -132,9 +119,9 @@ export function Header() {
 								<a>{page.page}</a>
 							</Link>
 						))}
-					</Box>
+					</BoxLinkStyled>
 				</Toolbar>
 			</Container>
-		</AppBar>
+		</AppBarStyled>
 	);
 }

@@ -6,6 +6,7 @@ import { Box, Container, Grid } from "@mui/material";
 import Link from "next/link";
 
 import { IconsComponent } from "../IconsComponent";
+import { BoxDividerStyled, BoxFolowStyled, BoxLinkStyled, GridStyled } from "./styles";
 export function Footer() {
 
 	const dataFooter = [
@@ -35,73 +36,29 @@ export function Footer() {
 				<Grid container spacing="3">
 
 					{dataFooter.map((el) => (
-						<Grid item={true} key={el.id} xs={12} md={4} sx={{ textAlign: "center" }}>
-							<Box sx={
-								{
-									span: {
-										display: "block",
-										fontSize: "1.563rem",
-										lineHeight: "3.125",
-										color: "var(--cyan-100)"
-									},
-									a: {
-										fontSize: "1rem",
-										lineHeight: "1.5rem",
-										fontWeight: "300",
-									}
-								}
-
-							}>
+						<GridStyled item={true} key={el.id} xs={12} md={4}>
+							<BoxLinkStyled>
 								<span>{el.span}</span>
 								<Link href={el.slug}>
 									<a>{el.link}</a>
 								</Link>
-							</Box>
-						</Grid>
+							</BoxLinkStyled>
+						</GridStyled>
 					))}
 				</Grid>
 			</Box>
-			<Box sx={{ margin: "3rem 0", padding: "1px", backgroundColor: "var(--white)" }}></Box>
+			
+			<BoxDividerStyled/>
 
 			<Box>
-				<Grid container spacing="3" sx={{textAlign: "center"}}>
+				<GridStyled container spacing="3">
 					<Grid item={true} xs={12} md={6} mb={2}>
-						<Box sx={
-							{
-								span: {
-									fontSize: "1.5rem",
-									fontWeight: "300",
-									paddingRight: 2,
-								},
-								a: {
-									paddingRight: 2,
-									svg: {
-										fontSize: "2.5rem",
-									}
-								}
-							}
-
-						}>
+						<BoxFolowStyled>
 							<span>Siga-nos nas redes sociais</span>
-						</Box>
+						</BoxFolowStyled>
 					</Grid>
 					<Grid item={true} xs={12} md={6}>
-						<Box sx={
-							{
-								span: {
-									fontSize: "1.5rem",
-									fontWeight: "300",
-									paddingRight: 2,
-								},
-								a: {
-									paddingRight: 2,
-									svg: {
-										fontSize: "2.5rem",
-									}
-								}
-							}
-
-						}>
+						<BoxFolowStyled>
 							<IconsComponent slug="https://www.linkedin.com/in/evelyn-helena" section="footer">
 								<LinkedInIcon />
 							</IconsComponent>
@@ -114,9 +71,9 @@ export function Footer() {
 							<IconsComponent slug="https://github.com/evelynhelena" section="footer">
 								<GitHubIcon />
 							</IconsComponent>
-						</Box>
+						</BoxFolowStyled>
 					</Grid>
-				</Grid>
+				</GridStyled>
 			</Box>
 		</Container>
 	);
