@@ -3,7 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import { styled } from "@mui/system";
 
 export const AppBarStyled = styled(AppBar)({
-	padding: "2rem 0" 
+	padding: "2rem 0",
+	boxShadow: "none"
 });
 
 export const BoxLinkStyled = styled(Box)({
@@ -14,5 +15,8 @@ export const BoxLinkStyled = styled(Box)({
 		":hover": {
 			color: "var(--cyan-100)",
 		}
-	} 
+	},
+	".activeLink":{
+		color: "var(--blue-100)"
+	}
 });

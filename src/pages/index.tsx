@@ -15,6 +15,7 @@ import astronautFooter from "../../public/images/astronautFooter.gif";
 import rocketFooter from "../../public/images/rocketFooter.gif";
 import { BoxInfos } from "../components/BoxInfos";
 import { Greeting } from "../components/Greeting";
+import { Header } from "../components/Header";
 import { IconsComponent } from "../components/IconsComponent";
 import { Paragraph } from "../components/Paragraph";
 import { SubscribeButton } from "../components/SubscribeButton";
@@ -49,13 +50,15 @@ interface CardProps {
   id: number;
 }
 
-export default function Home({ homeContent, cardData }: HomeProps) {
+export default function Home({ homeContent, cardData}: HomeProps) {
 	const data = homeContent[0];
+
 	return (
 		<>
 			<Head>
 				<title>JuniorInit | Home</title>
 			</Head>
+			<Header />
 			<Container maxWidth="lg">
 				<BoxAboutBlogStyled>
 					<Box>

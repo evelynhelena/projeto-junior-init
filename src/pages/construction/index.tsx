@@ -3,6 +3,7 @@ import Image from "next/image";
 
 
 import construction from "../../../public/images/screwdriver.gif";
+import { Header } from "../../components/Header";
 import { BoxStyled, TypographyStyled } from "../../styles/constructionStyles";
 export default function Contruction() {
 	return (
@@ -10,6 +11,7 @@ export default function Contruction() {
 			<Head>
 				<title>JuniorInit | Construção</title>
 			</Head>
+			<Header/>
 			<BoxStyled>
 				<TypographyStyled variant="h2">
                 Em construção
