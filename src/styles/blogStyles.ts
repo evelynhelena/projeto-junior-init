@@ -5,10 +5,9 @@ import BannerBlog from "../../public/images/bannerBlog.svg";
 
 export const BannerBox = styled(Box)({
 	backgroundImage: `url(${BannerBlog.src})`,
-	backgroundPosition: "center",
 	backgroundRepeat: "no-repeat",
-	height: "62.5rem",
 	backgroundSize:"cover",
+	padding: "0 0 10rem 0",
 });
 
 export const ContainerStyled = styled(Container)({

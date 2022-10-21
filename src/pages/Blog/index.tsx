@@ -6,28 +6,35 @@ import { BannerBox, BoxApresentation, BoxInfo, BoxYoutube, ContainerStyled } fro
 
 export default function Blog() {
 	return (
-		<BannerBox>
-			<Header />
-			<ContainerStyled>
-				<BoxApresentation>
-					<BoxInfo>
-						<h1> 
-							<span>Aqui você encontra </span>
-							<br />
-					O MELHOR CONTEÚDO!
-						</h1>
-					</BoxInfo>
-					<BoxYoutube>
-						<Box className="youtubeIcon">
-							<YouTubeIcon/>
-						</Box>
-						<Box className="youtubeInfo">
-							<strong>30+</strong>
-							<span>Aulas no youtube</span>
-						</Box>
-					</BoxYoutube>
-				</BoxApresentation>
-			</ContainerStyled>
-		</BannerBox>
+		<>
+
+			<BannerBox>
+				<Header />
+				<ContainerStyled>
+					<BoxApresentation sx={
+						{ 
+							marginTop: { xs: "2rem", md: "8rem" } 
+						}}>
+						<BoxInfo>
+							<h1>
+								<span>Aqui você encontra </span>
+								<br />
+							MELHOR CONTEÚDO!
+							</h1>
+						</BoxInfo>
+						<BoxYoutube sx={{justifyContent: {xs:"center", md:"flex-start"}}}>
+							<Box className="youtubeIcon">
+								<YouTubeIcon />
+							</Box>
+							<Box className="youtubeInfo">
+								<strong>30+</strong>
+								<span>Aulas no youtube</span>
+							</Box>
+						</BoxYoutube>
+					</BoxApresentation>
+				</ContainerStyled>
+			</BannerBox>
+			<h1>Ola muando</h1>
+		</>
 	);
 }
