@@ -68,3 +68,12 @@ export const BoxYoutube = styled(Box)({
 		}
 	}
 });
+
+export const BoxBlog = styled(Box)({
+	padding: "30px",
+	justifyContent: "center",
+	display: "flex",
+	flexDirection: "column",
+	width: "100%",
+	background: "linear-gradient(90.73deg, #1C2329 34.88%, #020205 88.78%)",
+});
