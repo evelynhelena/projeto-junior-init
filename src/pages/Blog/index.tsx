@@ -1,13 +1,16 @@
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Rating } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 import ImgBlog from "../../../public/images/imgeblog.png";
 import { Header } from "../../components/Header";
 import { BannerBox, BoxApresentation, BoxBlog, BoxInfo, BoxYoutube, ContainerStyled } from "../../styles/blogStyles";
 
 export default function Blog() {
+	const [value, setValue] = useState<number | null>(2);
+
 	return (
 		<>
 			{console.log(ImgBlog)}
@@ -41,16 +44,30 @@ export default function Blog() {
 				</ContainerStyled>
 			</BannerBox>
 			<Container>
-				<Box mt={6} display="flex" alignItems="center" justifyContent="space-between" gap={2}>
+				<Box display="flex" alignItems="center">
 					<BoxBlog>
-						<strong>HTML</strong>
-						<p>Entenda o que é HTML e como iniciar suas primeiras páginas.</p>
-						<span>icone</span>
+						<Box maxWidth="500px">
+							<Box display="flex" gap={2} alignItems="center">
+								<strong>HTML</strong>
+								<Rating
+									name="simple-controlled"
+									size="large"
+									value={value}
+									onChange={(event, newValue) => {
+										setValue(newValue);
+									}}
+								/>
+							</Box>
+							<p>Entenda o que é HTML e como iniciar suas primeiras páginas.</p>
+							<span>icone</span>
+						</Box>
 					</BoxBlog>
+	
 					<Box>
 						<Image src={ImgBlog.src} alt="Foguete" height={ImgBlog.height} width={ImgBlog.width}></Image>
 					</Box>
 				</Box>
+
 			</Container>
 		</>
 	);

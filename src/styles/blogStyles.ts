@@ -70,10 +70,22 @@ export const BoxYoutube = styled(Box)({
 });
 
 export const BoxBlog = styled(Box)({
-	padding: "30px",
-	justifyContent: "center",
-	display: "flex",
-	flexDirection: "column",
 	width: "100%",
 	background: "linear-gradient(90.73deg, #1C2329 34.88%, #020205 88.78%)",
+	padding: "40px",
+	borderRadius: "10px",
+	flexDirection:"column",
+
+	strong:{
+		color: "var(--cyan-50)",
+		fontSize: "1.875rem",
+	},
+
+	p:{
+		fontSize: "1.5rem"
+	},
+
+	".MuiRating-iconEmpty":{
+		color: "#948f8f"
+	}
 });
